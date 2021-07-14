@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "fs-extra": "^10.0.0"
+    "fs-extra": "^10.0.0",
+    "http": "^0.0.1-security"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
