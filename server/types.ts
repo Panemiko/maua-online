@@ -1,4 +1,4 @@
-import type { Application } from 'express'
+import type { Application, Router } from 'express'
 import type { Server as httpServer } from 'http'
 
 export interface ServerComponent {
@@ -11,6 +11,7 @@ export interface ApiComponent {
     config: ApiConfig
     app?: Application
     http?: httpServer
+    routes?: Router
     start: Function
 }
 
