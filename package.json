@@ -8,8 +8,11 @@
     "server:build": "tsc --project tsconfig-server.json",
     "server:start": "node /build/server/index.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "fs-extra": "^10.0.0"
+  },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.12",
     "@types/node": "^15.12.4",
     "@typescript-eslint/eslint-plugin": "^4.28.0",
     "@typescript-eslint/parser": "^4.28.0",
