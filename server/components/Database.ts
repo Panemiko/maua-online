@@ -3,6 +3,7 @@ import colors from 'colorts'
 import { connect } from 'mongoose'
 
 export default function Database(config: DatabaseConfig) {
+
     const database: DatabaseComponent = {
         config,
         start
@@ -27,4 +28,5 @@ export default function Database(config: DatabaseConfig) {
     }
 
     return database
+
 }

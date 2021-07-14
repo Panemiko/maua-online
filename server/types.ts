@@ -1,9 +1,11 @@
 import type { Application, Router } from 'express'
 import type { Server as httpServer } from 'http'
 
+// App components
 export interface ServerComponent {
     config: ServerConfig
     api?: ApiComponent
+    database?: DatabaseComponent
     start: Function
 }
 
@@ -20,6 +22,7 @@ export interface ApiComponent {
     start: Function
 }
 
+// App configs
 export interface ServerConfig {
     api: ApiConfig
     database: DatabaseConfig
