@@ -1,6 +1,6 @@
 import type { Request } from 'express'
 
-export default function verifyParams(body: Request[`body`], params: string[]) {
+export default function verifyParams(body: Object, params: string[]) {
     return new Promise<void>((resolve, reject) => {
 
         params.forEach(param => {
