@@ -37,3 +37,14 @@ export interface DatabaseConfig {
 export interface ApiConfig {
     port: number
 }
+
+
+// Database entities
+
+export interface UserEntity {
+    _id: string
+    name: string
+    role: string
+    subject?: string
+    class?: string
+}
