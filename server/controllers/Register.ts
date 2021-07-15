@@ -1,4 +1,8 @@
 import type { Request, Response } from 'express'
+import type { Document } from 'mongoose'
+import type { UserEntity } from '../types'
+
+import { User } from '../entities'
 
 import verifyParams from '../middlewares/verifyParams'
 import verifySyntax from '../middlewares/verifySyntax'
@@ -23,6 +27,12 @@ export default async function Register(req: Request, res: Response) {
         await verifySyntax(`password`, /^.{8,64}$/, password)
         await verifySyntax(`register`, /^[0-9]{6}$/, register)
 
+        // Verify if the email is already used
+        await emailAlreadyUsed(email)
+
+        // Get the user from their register
+        const user = await getUserFromRegister(register)
+
         // Return to the client
         res.send(`a`)
 
@@ -33,4 +43,35 @@ export default async function Register(req: Request, res: Response) {
 
     }
 
+}
+
+/**
+ * @param email - The e-mail to be verified
+ * @throws email-already-used
+ */
+function emailAlreadyUsed(email: string) {
+    return new Promise<void>((resolve, reject) => {
+
+        User.findOne({ email }).then((user) => {
+            if (!user) return reject(`email-already-used`)
+            else return resolve()
+        })
+
+    })
+}
+
+/**
+ * @param register - The user register
+ * @throws register-not-found
+ */
+function getUserFromRegister(register: string) {
+    return new Promise<UserEntity & Document<any, any, UserEntity>>((resolve, reject) => {
+
+        User.findOne({ register })
+            .then(user => {
+                if (!user) return reject(`register-not-found`)
+                else resolve(user)
+            })
+
+    })
 }
