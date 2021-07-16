@@ -12,6 +12,12 @@ interface RequestBody {
     password: string
 }
 
+/**
+ * @param email - The client account e-mail
+ * @param password - The client account password
+ * @description Query on the database a user with the passed e-mail and compare the passwords
+ * @returns User's refresh token
+ */
 export default async function Login(req: Request, res: Response) {
 
     try {
