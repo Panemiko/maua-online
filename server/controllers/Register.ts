@@ -12,6 +12,13 @@ interface RequestBody {
     register: string
 }
 
+/**
+ * @param email - The e-mail to set in the account
+ * @param password - The password to set in the account
+ * @param register - The account register code (gave by school)
+ * @description Gets the user by the register gave and update with the e-mail and password passed
+ * @returns User's refresh token
+*/
 export default async function Register(req: Request, res: Response) {
 
     try {
@@ -54,6 +61,7 @@ export default async function Register(req: Request, res: Response) {
 /**
  * @param email - The e-mail to be verified
  * @throws email-already-used
+ * @description Get the user from database by e-mail and verify if the user is null
  */
 function emailAlreadyUsed(email: string) {
     return new Promise<void>((resolve, reject) => {
@@ -69,6 +77,7 @@ function emailAlreadyUsed(email: string) {
 /**
  * @param register - The user register
  * @throws register-not-found
+ * @description Get the user from the register code passed
  */
 function getUserFromRegister(register: string) {
     return new Promise<UserEntity & Document<any, any, UserEntity>>((resolve, reject) => {
