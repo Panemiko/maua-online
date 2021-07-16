@@ -12,7 +12,7 @@ const expiresIn = config.api.accessDuration
 /**
  * @param info - The object to be encrypted
  * @param type - The token type
- * @returns - The object encrypted with the token type key
+ * @returns The object encrypted with the token type key
  */
 export function createToken(info: Object, type: string) {
     return new Promise<string>((resolve, reject) => {
@@ -36,7 +36,7 @@ export function createToken(info: Object, type: string) {
  * @param token - The token to be decrypted
  * @param type - The token type
  * @throws token-invalid
- * @returns - The object decrypted
+ * @returns The object decrypted
  */
 export function readToken(token: string, type: string) {
     return new Promise<any>((resolve, reject) => {
