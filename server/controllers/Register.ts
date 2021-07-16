@@ -5,6 +5,7 @@ import type { UserEntity } from '../types'
 import { User } from '../entities'
 import verifyParams from '../services/verifyParams'
 import verifySyntax from '../services/verifySyntax'
+import { createToken } from '../services/jwt'
 
 interface RequestBody {
     email: string
@@ -39,15 +40,19 @@ export default async function Register(req: Request, res: Response) {
         // Get the user from their register
         const user = await getUserFromRegister(register)
 
+        // Create a refresh token for the user
+        const token = await createToken({ user: user._id }, `refresh`)
+
         // Update the user with the new info
         await user.updateOne({
             register: null,
+            token,
             email,
             password
         })
 
         // Return to the client the user refresh token
-        res.status(200).json({ status: `success`, params: { token: user.token } })
+        res.status(200).json({ status: `success`, params: { token } })
 
     } catch (status) {
 
