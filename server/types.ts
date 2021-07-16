@@ -35,6 +35,7 @@ export interface DatabaseConfig {
 }
 
 export interface ApiConfig {
+    accessDuration: string
     port: number
 }
 
