@@ -43,6 +43,7 @@ export interface ApiConfig {
 
 export interface UserEntity {
     _id: string
+    token: string
     name: string
     role: string
     subject?: string
