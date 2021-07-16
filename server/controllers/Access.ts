@@ -1,5 +1,7 @@
 import type { Request, Response } from 'express'
 
+import { User } from '../entities'
+
 import verifyParams from '../services/verifyParams'
 import verifySyntax from '../services/verifySyntax'
 import { readToken, createToken } from '../services/jwt'
@@ -24,6 +26,9 @@ export default async function Access(req: Request, res: Response) {
         // Verify the parameters syntax passed
         await verifySyntax(`token`, /^ey[0-9a-zA-Z]+\.ey[0-9a-zA-Z]+\.[0-9a-zA-Z]+/, token)
 
+        // Verify if the client token exists
+        await tokenExists(token)
+
         // Get the user from their token
         const tokenDecrypted = await readToken(token, `refresh`)
 
@@ -40,4 +45,21 @@ export default async function Access(req: Request, res: Response) {
 
     }
 
+}
+
+/**
+ * @param token - The user refresh token
+ * @throws token-invalid
+ * @description Find in the database the client token and verify if is registered
+ */
+function tokenExists(token: string) {
+    return new Promise<void>((resolve, reject) => {
+
+        User.findOne({ token })
+            .then(user => {
+                if (!user) return reject(`token-invalid`)
+                else return resolve()
+            })
+
+    })
 }
