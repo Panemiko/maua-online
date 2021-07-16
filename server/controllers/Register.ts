@@ -45,7 +45,7 @@ export default async function Register(req: Request, res: Response) {
 
         // Update the user with the new info
         await user.updateOne({
-            register: null,
+            $unset: { register: true },
             token,
             email,
             password
