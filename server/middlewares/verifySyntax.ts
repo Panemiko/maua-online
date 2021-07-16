@@ -4,6 +4,7 @@
  * @param regex - The regex to be followed by the input
  * @param input - The input to be tested
  * @throws invalid-{inputName}-syntax
+ * @description - Test the input with the regex passed
  */
 export default function verifySyntax(inputName: string, regex: RegExp, input: string) {
     return new Promise<void>((resolve, reject) => {
