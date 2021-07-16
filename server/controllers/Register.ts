@@ -3,8 +3,8 @@ import type { Document } from 'mongoose'
 import type { UserEntity } from '../types'
 
 import { User } from '../entities'
-import verifyParams from '../middlewares/verifyParams'
-import verifySyntax from '../middlewares/verifySyntax'
+import verifyParams from '../services/verifyParams'
+import verifySyntax from '../services/verifySyntax'
 
 interface RequestBody {
     email: string
