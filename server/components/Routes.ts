@@ -2,6 +2,7 @@ import { Router } from "express"
 import removeHeaders from '../middlewares/removeHeaders'
 
 import Register from "../controllers/Register"
+import Login from '../controllers/Login'
 
 export default function Routes() {
 
@@ -13,6 +14,7 @@ export default function Routes() {
 
     // Setting up routes
     routes.post(`/register`, Register)
+    routes.post(`/login`, Login)
 
     return routes
 }
