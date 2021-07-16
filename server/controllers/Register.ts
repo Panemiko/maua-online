@@ -1,15 +1,10 @@
 import type { Request, Response } from 'express'
 import type { Document } from 'mongoose'
 import type { UserEntity } from '../types'
-import { sign } from 'jsonwebtoken'
-import { config as dotenv } from 'dotenv'
 
 import { User } from '../entities'
-
 import verifyParams from '../middlewares/verifyParams'
 import verifySyntax from '../middlewares/verifySyntax'
-
-dotenv()
 
 interface RequestBody {
     email: string
@@ -37,14 +32,14 @@ export default async function Register(req: Request, res: Response) {
         // Get the user from their register
         const user = await getUserFromRegister(register)
 
-        // Remove the register code from the user
+        // Update the user with the new info
         await user.updateOne({
             register: null,
             email,
             password
         })
 
-        // Return to the client
+        // Return to the client the user refresh token
         res.status(200).json({ status: `success`, params: { token: user.token } })
 
     } catch (status) {
