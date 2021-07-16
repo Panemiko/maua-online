@@ -1,5 +1,6 @@
 {
     "api": {
+        "accessDuration": "30 min",
         "port": 3000
     },
     "database": {

@@ -3,6 +3,7 @@ import removeHeaders from '../middlewares/removeHeaders'
 
 import Register from "../controllers/Register"
 import Login from '../controllers/Login'
+import Access from "../controllers/Access"
 
 export default function Routes() {
 
@@ -15,6 +16,7 @@ export default function Routes() {
     // Setting up routes
     routes.post(`/register`, Register)
     routes.post(`/login`, Login)
+    routes.post(`/access`, Access)
 
     return routes
 }
