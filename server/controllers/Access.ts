@@ -1,12 +1,8 @@
 import type { Request, Response } from 'express'
 
-import jwt from 'jsonwebtoken'
-import { config as dotenv } from 'dotenv'
-
-import verifyParams from '../middlewares/verifyParams'
-import verifySyntax from '../middlewares/verifySyntax'
-
-dotenv()
+import verifyParams from '../services/verifyParams'
+import verifySyntax from '../services/verifySyntax'
+import { readToken, createToken } from '../services/jwt'
 
 interface RequestBody {
     token: string
@@ -22,20 +18,20 @@ export default async function Access(req: Request, res: Response) {
     try {
 
         // Verify if the required params are present
-        await verifyParams(req.body, [`email`, `password`])
+        await verifyParams(req.body, [`token`])
         const { token }: RequestBody = req.body
 
         // Verify the parameters syntax passed
         await verifySyntax(`token`, /^ey[0-9a-zA-Z]+\.ey[0-9a-zA-Z]+\.[0-9a-zA-Z]+/, token)
 
         // Get the user from their token
-        const user = jwt.verify(token, process.env.REFRESH_TOKEN)
+        const tokenDecrypted = await readToken(token, `refresh`)
 
-        // Creates a access token
-        await createAccessToken(user.toString())
+        // Creates a access token from the user id
+        const access = await createToken({ user: tokenDecrypted.user }, `access`)
 
         // Return the token to the client
-        res.status(200).json({ status: `success`, params: {} })
+        res.status(200).json({ status: `success`, params: { access } })
 
     } catch (status) {
 
@@ -44,13 +40,4 @@ export default async function Access(req: Request, res: Response) {
 
     }
 
-}
-
-function createAccessToken(user: string) {
-    return new Promise<void>(resolve => {
-
-        console.log(user)
-        resolve()
-
-    })
 }
