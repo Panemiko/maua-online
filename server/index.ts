@@ -1,4 +1,14 @@
 import Server from './components/Server'
 
-const server = Server()
-server.start()
+start()
+
+/**
+ * @description Starts the server component
+ */
+async function start() {
+
+    const server = await Server()
+
+    server.start()
+
+}

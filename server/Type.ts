@@ -6,12 +6,12 @@ export interface ServerComponent {
     config: ServerConfig
     api?: ApiComponent
     database?: DatabaseComponent
-    start: Function
+    start(): Promise<void>
 }
 
 export interface DatabaseComponent {
     config: DatabaseConfig
-    start: Function
+    start(): Promise<void>
 }
 
 export interface ApiComponent {
@@ -19,7 +19,7 @@ export interface ApiComponent {
     app?: Application
     http?: httpServer
     routes?: Router
-    start: Function
+    start(): Promise<void>
 }
 
 // App configs

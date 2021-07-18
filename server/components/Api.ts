@@ -6,20 +6,28 @@ import colors from 'colorts'
 
 import Routes from './Routes'
 
-export default function Api(config: ApiConfig) {
+/**
+ * @param config - Api config
+ * @returns Api Component
+ * @description Creates a Api Component
+ */
+export default async function Api(config: ApiConfig): Promise<ApiComponent> {
 
     const api: ApiComponent = {
         config,
         start
     }
 
+    /**
+     * @description Starts the api component
+     */
     async function start(): Promise<void> {
 
         // Initializing the components
         console.log(`> [api] ${colors(`Starting Api`).yellow}`)
         api.app = express()
         api.http = createServer(api.app)
-        api.routes = Routes()
+        api.routes = await Routes()
 
         // Setting up global middlewares
         console.log(`> [api] ${colors(`Setting Up Middlewares`).yellow}`)

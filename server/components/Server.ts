@@ -6,20 +6,27 @@ import colors from 'colorts'
 import Api from './Api'
 import Database from './Database'
 
-export default function Server() {
+/**
+ * @returns Server component
+ * @description Creates a Server component
+ */
+export default async function Server(): Promise<ServerComponent> {
 
     const server: ServerComponent = {
         config: readJSONSync(`server-config.json`, { encoding: `utf8` }),
         start
     }
 
+    /**
+     * @description Starts the Server child components
+     */
     async function start(): Promise<void> {
 
         console.log(`> [server] ${colors(`Starting Server`).yellow}`)
 
         // Initializing the components
-        server.api = Api(server.config.api)
-        server.database = Database(server.config.database)
+        server.api = await Api(server.config.api)
+        server.database = await Database(server.config.database)
 
         // Starting the components
         await server.database.start()
