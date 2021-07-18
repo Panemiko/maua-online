@@ -2,3 +2,4 @@ node_modules
 build
 requests.rest
 .env
+.next
