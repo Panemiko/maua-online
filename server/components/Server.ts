@@ -13,7 +13,7 @@ import Database from './Database'
 export default async function Server(): Promise<ServerComponent> {
 
     const server: ServerComponent = {
-        config: readJSONSync(`server-config.json`, { encoding: `utf8` }),
+        config: readJSONSync(`config.json`, { encoding: `utf8` }),
         start
     }
 

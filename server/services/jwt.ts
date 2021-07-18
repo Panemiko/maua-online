@@ -6,7 +6,7 @@ import { readJSONSync } from 'fs-extra'
 
 dotenv()
 
-const config: ServerConfig = readJSONSync(`server-config.json`)
+const config: ServerConfig = readJSONSync(`config.json`)
 const expiresIn = config.api.accessDuration
 
 /**
