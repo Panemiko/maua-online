@@ -27,8 +27,8 @@ export default async function Login(req: Request, res: Response) {
         const { email, password }: RequestBody = req.body
 
         // Verify the parameters syntax passed
-        await verifySyntax(`email`, /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i, email)
-        await verifySyntax(`password`, /^.{8,64}$/, password)
+        await verifySyntax(`email`, email, /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i)
+        await verifySyntax(`password`, password, /^.{8,64}$/)
 
         // Get user from the database by the e-mail
         const user = await getUserByEmail(email)

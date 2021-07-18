@@ -30,9 +30,9 @@ export default async function Register(req: Request, res: Response) {
         const { email, password, register }: RequestBody = req.body
 
         // Verify the parameters syntax passed
-        await verifySyntax(`email`, /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i, email)
-        await verifySyntax(`password`, /^.{8,64}$/, password)
-        await verifySyntax(`register`, /^[0-9]{6}$/, register)
+        await verifySyntax(`email`, email, /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i)
+        await verifySyntax(`password`, password, /^.{8,64}$/)
+        await verifySyntax(`register`, register, /^[0-9]{6}$/)
 
         // Verify if the email is already used
         await emailAlreadyUsed(email)

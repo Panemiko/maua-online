@@ -23,7 +23,7 @@ export default async function Access(req: Request, res: Response) {
         const { token }: RequestBody = req.body
 
         // Verify the parameters syntax passed
-        await verifySyntax(`token`, /^ey[0-9a-zA-Z]+\.ey[0-9a-zA-Z]+\.[0-9a-zA-Z]+/, token)
+        await verifySyntax(`token`, token, /^ey[0-9a-zA-Z]+\.ey[0-9a-zA-Z]+\.[0-9a-zA-Z]+/)
 
         // Verify if the client token exists
         await tokenExists(token)

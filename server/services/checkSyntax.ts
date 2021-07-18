@@ -6,7 +6,7 @@
  * @throws invalid-{inputName}-syntax
  * @description - Test the input with the regex passed
  */
-export default function verifySyntax(inputName: string, regex: RegExp, input: string) {
+export default function verifySyntax(inputName: string, input: string, regex: RegExp) {
     return new Promise<void>((resolve, reject) => {
 
         const test = regex.test(input)
