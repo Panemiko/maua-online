@@ -41,7 +41,6 @@ export interface ApiConfig {
 
 
 // Database entities
-
 export interface UserEntity {
     _id: string
     register: string

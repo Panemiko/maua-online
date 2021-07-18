@@ -1,4 +1,4 @@
-import type { ServerConfig } from '../types'
+import type { ServerConfig } from '../Types'
 
 import jwt from 'jsonwebtoken'
 import { config as dotenv } from 'dotenv'

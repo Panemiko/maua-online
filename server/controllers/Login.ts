@@ -1,11 +1,10 @@
 import type { Request, Response } from 'express'
-import type { UserEntity } from '../types'
+import type { UserEntity } from '../Types'
 import type { Document } from 'mongoose'
 
-import { User } from '../entities'
-
-import verifyParams from '../services/verifyParams'
-import verifySyntax from '../services/verifySyntax'
+import { User } from '../Models'
+import verifyParams from '../services/checkBody'
+import verifySyntax from '../services/checkSyntax'
 
 interface RequestBody {
     email: string

@@ -1,4 +1,4 @@
-import type { ApiComponent, ApiConfig } from '../types'
+import type { ApiComponent, ApiConfig } from '../Types'
 import express from 'express'
 import { createServer } from 'http'
 import colors from 'colorts'
