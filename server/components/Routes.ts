@@ -1,6 +1,6 @@
 import { Router } from "express"
-import removeHeaders from '../middlewares/removeHeaders'
 
+import removeHeaders from '../middlewares/removeHeaders'
 import Register from "../controllers/Register"
 import Login from '../controllers/Login'
 import Access from "../controllers/Access"

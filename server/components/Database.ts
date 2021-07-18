@@ -1,4 +1,5 @@
 import type { DatabaseComponent, DatabaseConfig } from '../Types'
+
 import colors from 'colorts'
 import { connect } from 'mongoose'
 

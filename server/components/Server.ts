@@ -1,6 +1,8 @@
 import type { ServerComponent } from '../Types'
+
 import { readJSONSync } from 'fs-extra'
 import colors from 'colorts'
+
 import Api from './Api'
 import Database from './Database'
 

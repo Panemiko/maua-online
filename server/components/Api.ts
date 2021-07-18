@@ -1,7 +1,9 @@
 import type { ApiComponent, ApiConfig } from '../Types'
+
 import express from 'express'
 import { createServer } from 'http'
 import colors from 'colorts'
+
 import Routes from './Routes'
 
 export default function Api(config: ApiConfig) {
