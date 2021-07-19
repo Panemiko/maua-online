@@ -7,6 +7,11 @@
     "server:dev": "ts-node-dev --respawn --project tsconfig-server.json server/index.ts",
     "server:build": "tsc --project tsconfig-server.json",
     "server:start": "node ./build/server/index.js",
+    "web:dev": "next dev -p 4000",
+    "web:build": "next build",
+    "web:start": "next start -p 4000",
+    "build": "yarn server:build && yarn web:build",
+    "start": "NODE_ENV=production node ./build/index.js",
     "migrate": "migrate-mongo"
   },
   "dependencies": {
@@ -34,6 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^4.28.0",
     "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.12.1",
+    "eslint-config-next": "^11.0.1",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",

@@ -7,12 +7,15 @@
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
       "strictPropertyInitialization": false,
-      "outDir": "build/server"
+      "outDir": "build/"
     },
     "include": [
-      "server/*"
+      "server/*",
+      "index.ts"
     ],
     "exclude": [
-        "node_modules"
+      "node_modules",
+      ".next",
+      "build"
     ]
   }

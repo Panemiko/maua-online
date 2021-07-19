@@ -6,7 +6,7 @@ export interface ServerComponent {
     config: ServerConfig
     api?: ApiComponent
     database?: DatabaseComponent
-    start(): Promise<void>
+    start(useNext?: boolean): Promise<void>
 }
 
 export interface DatabaseComponent {
@@ -19,6 +19,9 @@ export interface ApiComponent {
     app?: Application
     http?: httpServer
     routes?: Router
+    next?: Router
+    useNext: boolean
+    allowNext(): Promise<void>
     start(): Promise<void>
 }
 
