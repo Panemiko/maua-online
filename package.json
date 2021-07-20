@@ -23,7 +23,6 @@
     "jsonwebtoken": "^8.5.1",
     "migrate-mongo": "^8.2.2",
     "mongoose": "^5.13.2",
-    "next": "^11.0.1",
     "next-cookies": "^2.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

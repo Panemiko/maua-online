@@ -5,7 +5,6 @@ import { createServer } from 'http'
 import colors from 'colorts'
 
 import Routes from './Routes'
-import Next from './Next'
 
 /**
  * @param config - Api config
@@ -16,8 +15,6 @@ export default async function Api(config: ApiConfig): Promise<ApiComponent> {
 
     const api: ApiComponent = {
         config,
-        useNext: false,
-        allowNext,
         start
     }
 
@@ -36,11 +33,10 @@ export default async function Api(config: ApiConfig): Promise<ApiComponent> {
         console.log(`> [api] ${colors(`Setting Up Middlewares`).yellow}`)
         api.app.use(express.json())
 
-        // Check if is set to use nextjs
-        if (api.useNext) {
-            console.log(`> [api] ${colors(`Setting up Next Routes`).yellow}`)
-            api.next = await Next()
-            api.app.use(`*`, api.next)
+        // Set web routes
+        if (process.env.NODE_ENV === `production`) {
+            console.log(`> [api] ${colors(`Setting up Web Routes`).yellow}`)
+            api.app.use(`*`, express.static(`../../web`))
         }
 
         // Setting up api router
@@ -51,13 +47,6 @@ export default async function Api(config: ApiConfig): Promise<ApiComponent> {
         api.http.listen(api.config.port)
         console.log(`> [api] ${colors(`Api Started`).green}`)
 
-    }
-
-    /**
-     * @description Sets useNext property to true
-     */
-    async function allowNext() {
-        api.useNext = true
     }
 
     return api

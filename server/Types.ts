@@ -19,9 +19,6 @@ export interface ApiComponent {
     app?: Application
     http?: httpServer
     routes?: Router
-    next?: Router
-    useNext: boolean
-    allowNext(): Promise<void>
     start(): Promise<void>
 }
 
