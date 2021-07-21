@@ -3,9 +3,7 @@ import React from 'react'
 const RegisterPage: React.FC = () => {
 
     return (
-        <div>
-            <p>Teste</p>
-        </div>
+        <h1>Register</h1>
     )
 
 }
