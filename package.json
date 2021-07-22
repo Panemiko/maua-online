@@ -8,7 +8,7 @@
     "server:build": "tsc --project tsconfig-server.json",
     "server:start": "node ./build/server/index.js",
     "web:dev": "PORT=4000 react-scripts start",
-    "web:build": "react-scripts build",
+    "web:build": "BUILD_PATH='./build/web' react-scripts build",
     "build": "yarn server:build && yarn web:build",
     "start": "NODE_ENV=production node ./build/index.js",
     "migrate": "migrate-mongo"
@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "fs-extra": "^10.0.0",
     "http": "^0.0.1-security",
+    "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "migrate-mongo": "^8.2.2",
     "mongoose": "^5.13.2",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/fs-extra": "^9.0.12",
+    "@types/js-cookie": "^2.2.7",
     "@types/jsonwebtoken": "^8.5.4",
     "@types/node": "^15.12.4",
     "@types/react": "^17.0.14",
@@ -43,7 +45,6 @@
     "@typescript-eslint/eslint-plugin": "^4.28.0",
     "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.12.1",
-    "eslint-config-next": "^11.0.1",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
