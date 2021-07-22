@@ -20,15 +20,13 @@ export default async function Server(): Promise<ServerComponent> {
     /**
      * @description Starts the Server child components
      */
-    async function start(useNext?: boolean): Promise<void> {
+    async function start(): Promise<void> {
 
         console.log(`> [server] ${colors(`Starting Server`).yellow}`)
 
         // Initializing the components
         server.api = await Api(server.config.api)
         server.database = await Database(server.config.database)
-
-        if (useNext) { await server.api.allowNext() }
 
         // Starting the components
         await server.database.start()

@@ -1,6 +1,7 @@
 import { Router } from "express"
 
 import removeHeaders from '../middlewares/removeHeaders'
+import addHeaders from "../middlewares/addHeaders"
 import Register from "../controllers/Register"
 import Login from '../controllers/Login'
 import Access from "../controllers/Access"
@@ -16,6 +17,7 @@ export default async function Routes(): Promise<Router> {
 
     // Setting Up Middlewares
     routes.use(removeHeaders)
+    routes.use(addHeaders)
 
     // Setting up routes
     routes.post(`/register`, Register)
