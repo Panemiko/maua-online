@@ -6,7 +6,7 @@ export const Main = styled.div`
     position: absolute;
     height: 100vh;
     width: 100vw;
-    background-color: ${props => props.theme.background};
+    background-color: #FFFFFF;
 
 `
 
@@ -69,17 +69,11 @@ export const Input = styled.input`
     font-weight: normal;
     font-size: 16px;
     line-height: 20px;
-    color: #00000006;
+    color: #000000;
 
     background: #E2E2E2;
-    border-radius: 20px;
+    border-radius: 15px;
     border: 0;
-
-    :focus {
-        border-radius: 10px;
-        border-bottom: 2px solid #DA251C;
-        color: #000000;
-    }
 
 `
 
@@ -101,7 +95,7 @@ export const Button = styled.button`
     border: 0px;
 
     :active {
-        background-color: #DA251C06;
+        background-color: #991813;
     }
 
 `
