@@ -6,16 +6,18 @@ export const Main = styled.div`
     position: absolute;
     height: 100vh;
     width: 100vw;
+
     background-color: #FFFFFF;
 
 `
 
 export const Container = styled.div`
 
+    margin: 160px auto 160px auto; 
     width: 495px;
     height: 600px;
     box-sizing: border-box;
-    margin: 160px auto 160px auto; 
+
     background-color: ${props => props.theme.background2};
     border: 1px solid #AAAAAA;
     box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
@@ -33,7 +35,6 @@ export const Logo = styled.img`
 
 export const Title = styled.h1`
 
-
     margin: 18px 148px auto 148px;
 
     font-family: Roboto;
@@ -42,7 +43,6 @@ export const Title = styled.h1`
     font-size: 36px;
     line-height: 42px;
     text-align: center;
-
     color: #151515;
 
 `
@@ -70,7 +70,6 @@ export const Input = styled.input`
     font-size: 16px;
     line-height: 20px;
     color: #000000;
-
     background: #E2E2E2;
     border-radius: 15px;
     border: 0;
@@ -89,7 +88,6 @@ export const Button = styled.button`
     line-height: 28px;
     text-align: center;
     color: #FFFFFF;
-
     background: #DA251C;
     border-radius: 20px;
     border: 0px;
