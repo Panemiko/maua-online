@@ -19,6 +19,7 @@
         "padded-blocks": "off",
         "prefer-promise-reject-errors": "off",
         "no-useless-escape": "off",
+        "dot-notation": "off",
         "quotes": [
             "warn",
             "backtick"
